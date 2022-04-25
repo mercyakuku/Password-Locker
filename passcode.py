@@ -49,7 +49,7 @@ class Credentials():
                     a_user == user.username
         return a_user
 
-def __init__(self,account,userName, password):
+    def __init__(self,account,userName, password):
         """
         method that defines user credentials to be stored
         """
@@ -57,9 +57,23 @@ def __init__(self,account,userName, password):
         self.userName = userName
         self.password = password
 
-def save_details(self):
+    def save_details(self):
         """
         method to store a new credential to the credentials list
         """
-        Credentials.credentials_list.append(self)
-        
+Credentials.credentials_list.append(self)
+def delete_credentials(self):
+        """
+        delete_credentials method that deletes an account credentials from the credentials_list
+        """
+        Credentials.credentials_list.remove(self)
+    
+@classmethod
+def find_credential(cls, account):
+        """
+        Method that takes in a account_name and returns a credential that matches that account_name.
+
+        """
+        for credential in cls.credentials_list:
+            if credential.account == account:
+                return credential
