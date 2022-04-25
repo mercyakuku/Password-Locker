@@ -76,7 +76,7 @@ def find_credential(cls, account):
         for credential in cls.credentials_list:
             if credential.account == account:
                 return credential
-                
+
     @classmethod
     def copy_password(cls,account):
         found_credentials = Credentials.find_credential(account)
@@ -85,9 +85,21 @@ def find_credential(cls, account):
     @classmethod
     def if_credential_exist(cls, account):
         """
-        Method that checks if a credential exists from the credential list and returns true or false depending if the credential exists.
+        Method that checks if users credential exists from the credential list and returns true or false depending if the credential exists.
         """
         for credential in cls.credentials_list:
             if credential.account == account:
                 return True
         return False
+    @classmethod
+    def display_credentials(cls):
+        """
+        Method that returns all items in the credentials list
+
+        """
+        return cls.credentials_list
+
+    def generatePassword(stringLength=8):
+        """Generate a random password string of letters and digits and special characters"""
+        password = string.ascii_uppercase + string.ascii_lowercase + string.digits + "~!@#$%^&*"
+        return ''.join(random.choice(password) for i in range(stringLength))
